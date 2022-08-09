@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -16,10 +16,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { useTranslation } from 'react-i18next';
 
-import { AuthContextProvider } from './components/Auth/AuthContext';
-import { useAuthProvider } from './hooks/useAuthProvider';
 import ThemeProvider from './themes/ThemeProvider';
-import InputField from './components/Form/InputField';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +28,6 @@ const queryClient = new QueryClient({
 
 export function App() {
   const { i18n } = useTranslation();
-  const authProvider = useAuthProvider();
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
@@ -44,12 +40,10 @@ export function App() {
             <meta name="description" content="A React Boilerplate application" />
           </Helmet>
 
-          <AuthContextProvider authProvider={authProvider}>
-            <Routes></Routes>
-            <GlobalStyle />
+          <Routes></Routes>
+          <GlobalStyle />
 
-            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-          </AuthContextProvider>
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
         </ThemeProvider>
       </BrowserRouter>
     </QueryClientProvider>

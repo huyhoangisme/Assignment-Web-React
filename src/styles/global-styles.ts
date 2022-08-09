@@ -10,11 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
   }
-
-  button {
-    font-family: 'Oswald', sans-serif;
-  }
-
   #root {
     min-height: 100%;
     min-width: 100%;
