@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -17,6 +17,8 @@ import { GlobalStyle } from 'styles/global-styles';
 import { useTranslation } from 'react-i18next';
 
 import ThemeProvider from './themes/ThemeProvider';
+import { Layout } from './layouts/Layout';
+import { LoginPage } from './pages/Login/Loadable';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,7 +42,10 @@ export function App() {
             <meta name="description" content="A React Boilerplate application" />
           </Helmet>
 
-          <Routes></Routes>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<Layout />}></Route>
+          </Routes>
           <GlobalStyle />
 
           <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

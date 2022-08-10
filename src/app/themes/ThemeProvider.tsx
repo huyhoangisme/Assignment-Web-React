@@ -2,11 +2,11 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import React, { createContext, useState } from 'react';
 
 interface ThemeColors {
-  primary: string;
-  background: string;
-  backgroundLight: string;
   textColor: string;
-  grey: string;
+  background: string;
+  primary: string;
+  secondary: string;
+  bgColor: string;
 }
 
 interface ThemeProps {
@@ -17,11 +17,11 @@ interface ThemeProps {
 
 const initTheme: ThemeProps = {
   theme: {
-    primary: '#003CA6',
-    background: '#1E1E1E',
-    backgroundLight: '#353434',
-    textColor: '#fafafa',
-    grey: '#a5a5a5',
+    textColor: '#212529',
+    background: '#fff',
+    primary: '#3a529b;',
+    bgColor: '#f45c43;',
+    secondary: '#ff5c00',
   },
 };
 
@@ -46,51 +46,16 @@ const ThemeProvider = ({ children }) => {
     components: {
       Button: {
         variants: {
-          'primary-solid': {
-            bg: 'primary',
-            color: 'textColor',
-            py: '30px',
-            fontSize: '20px',
-            rounded: 'full',
-            lineHeight: '30px',
-            fontWeight: 600,
-            _hover: {
-              bg: theme.primary,
-            },
-            _active: {},
-          },
-          'primary-outline': {
-            bg: 'inherite',
-            color: 'primary',
-            ringColor: 'primary',
-            ring: 1,
-            py: '30px',
-            fontSize: '20px',
-            fontWeight: 600,
-            rounded: 'full',
-            lineHeight: '30px',
-            _hover: {},
-            _active: {},
-          },
-          'secondary-outline': {
-            bg: 'inherite',
-            color: 'textColor',
+          'black-outline': {
+            bg: '#333',
+            color: theme.background,
+            border: '1px solid #333',
+            width: 'full',
+            py: '20px',
             fontSize: '16px',
-            rounded: 'full',
-            ringColor: 'white',
-            ring: 1,
-            py: '30px',
             fontWeight: 600,
+            rounded: '0',
             lineHeight: '30px',
-            _hover: {},
-            _active: {},
-          },
-          'text-button': {
-            bg: 'inherite',
-            color: 'textColor',
-            fontSize: '20px',
-            fontWeight: 500,
-            rounded: 'full',
             _hover: {},
             _active: {},
           },
