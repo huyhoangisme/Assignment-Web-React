@@ -40,7 +40,7 @@ const InputField: React.FC<InputProps> = ({ name, label = '', leftIcon, rightIco
           type={'text'}
           height={45}
           borderRadius={0}
-          className="mb-[15px]"
+          className="mb-[5px]"
           {...props}
         />
         {rightIcon && <InputRightElement zIndex={10}>{rightIcon}</InputRightElement>}

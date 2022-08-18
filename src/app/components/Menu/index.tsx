@@ -2,13 +2,14 @@ import React from 'react';
 import {
   Button,
   Menu as MenuChakra,
+  MenuProps as MenuPropsChakra,
   MenuButton as MenuButtonChakra,
   MenuButtonProps,
   MenuList as MenuListChakra,
   MenuListProps,
 } from '@chakra-ui/react';
 import { useThemeContext } from 'app/themes/ThemeProvider';
-interface MenuProps {
+interface MenuProps extends MenuPropsChakra {
   title: string;
   children: React.ReactNode;
   rightIcon?: React.ReactNode;

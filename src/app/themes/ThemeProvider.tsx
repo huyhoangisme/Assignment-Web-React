@@ -18,7 +18,7 @@ interface ThemeProps {
 const initTheme: ThemeProps = {
   theme: {
     textColor: '#212529',
-    background: '#fff',
+    background: '#f5f5f5',
     primary: '#3a529b;',
     bgColor: '#f45c43;',
     secondary: '#ff5c00',
@@ -46,18 +46,25 @@ const ThemeProvider = ({ children }) => {
     components: {
       Button: {
         variants: {
-          'black-outline': {
-            bg: '#333',
+          'button-outline': {
             color: theme.background,
-            border: '1px solid #333',
             width: 'full',
             py: '20px',
             fontSize: '16px',
             fontWeight: 600,
             rounded: '0',
             lineHeight: '30px',
-            _hover: {},
+            _hover: { bg: theme.bgColor },
             _active: {},
+          },
+          'button-product-list': {
+            color: '#fff',
+            width: 'full',
+            bgColor: theme.bgColor,
+            height: '30px',
+            fontWeight: 400,
+            fontSize: '14px',
+            _hover: { bgColor: theme.primary },
           },
         },
       },

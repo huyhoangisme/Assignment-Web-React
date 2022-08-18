@@ -20,6 +20,7 @@ const Filter = () => {
           inputProps={{
             borderWidth: 0,
             focusBorderColor: theme.bgColor,
+            width: '250px',
           }}
           rightIcon={
             <Box
