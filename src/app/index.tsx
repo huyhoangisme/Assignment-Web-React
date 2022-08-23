@@ -22,6 +22,7 @@ import { LoginPage } from './pages/Login/Loadable';
 import { RegisterPage } from './pages/Register/Loadable';
 import { IntroducePage } from './pages/Introduce/Loadable';
 import { ContactPage } from './pages/Contact/Loadable';
+import { HomePage } from './pages/Home/Loadable';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -46,9 +47,10 @@ export function App() {
           </Helmet>
 
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
             <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="/gioithieu" element={<IntroducePage />} />
               <Route path="/lienhe" element={<ContactPage />} />
             </Route>

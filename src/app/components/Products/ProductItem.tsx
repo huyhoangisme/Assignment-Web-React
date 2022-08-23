@@ -22,7 +22,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
     <Box
       p="10px"
       bgColor="#fff"
-      width="180px"
+      width="full"
       borderRadius="10px"
       onMouseOver={() => onOpen()}
       onMouseOut={() => onClose()}
@@ -68,7 +68,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
         <Text fontSize="14px" className="cursor-pointer py-3" _hover={{ color: theme.bgColor }}>
           {name}
         </Text>
-        <Text color={theme.bgColor}>{price}</Text>
+        <Text color={theme.bgColor} fontSize="14px">
+          {price}
+        </Text>
       </Box>
     </Box>
   );

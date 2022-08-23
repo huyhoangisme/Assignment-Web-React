@@ -3,7 +3,6 @@ import Button from 'app/components/Button';
 import Footer from 'app/components/Footer';
 import Form from 'app/components/Form';
 import InputField from 'app/components/Form/InputField';
-import LogoApp from 'app/components/Header/Logo';
 import Title from 'app/components/Title';
 
 import { useThemeContext } from 'app/themes/ThemeProvider';
@@ -22,10 +21,6 @@ export const Login = () => {
   const handleSubmit = () => {};
   return (
     <Box>
-      <Box bgColor={theme.bgColor} py={10} className="flex items-center px-[100px] space-x-6">
-        <LogoApp />
-        <Text fontSize={25}>Đăng nhập</Text>
-      </Box>
       <Center>
         <Box w={400} p={30} marginY="40px" border={'1px solid #EBEBEB'} className="shadow-lg">
           <Box className="text-center">
