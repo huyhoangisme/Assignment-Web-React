@@ -23,6 +23,9 @@ import { RegisterPage } from './pages/Register/Loadable';
 import { IntroducePage } from './pages/Introduce/Loadable';
 import { ContactPage } from './pages/Contact/Loadable';
 import { HomePage } from './pages/Home/Loadable';
+import { AuthContextProvider } from './components/Auth/AuthContext';
+import { authProvider } from './pages/Login/components/AuthProvider';
+import { DetailProductPage } from './pages/Home/features/DetailProduct/Loadable';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,16 +48,19 @@ export function App() {
           >
             <meta name="description" content="A React Boilerplate application" />
           </Helmet>
-
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/gioithieu" element={<IntroducePage />} />
-              <Route path="/lienhe" element={<ContactPage />} />
-            </Route>
-          </Routes>
+          <AuthContextProvider authProvider={authProvider}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route path="/" element={<HomePage />}>
+                  <Route path="product/:name" element={<DetailProductPage />} />
+                </Route>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/gioithieu" element={<IntroducePage />} />
+                <Route path="/lienhe" element={<ContactPage />} />
+              </Route>
+            </Routes>
+          </AuthContextProvider>
           <GlobalStyle />
 
           <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

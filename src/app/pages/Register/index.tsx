@@ -1,6 +1,5 @@
 import { Box, Center, Text } from '@chakra-ui/react';
 import Button from 'app/components/Button';
-import Footer from 'app/components/Footer';
 import Form from 'app/components/Form';
 import InputField from 'app/components/Form/InputField';
 import Title from 'app/components/Title';
@@ -72,7 +71,6 @@ export const Register = () => {
           </Box>
         </Box>
       </Center>
-      <Footer />
     </Box>
   );
 };

@@ -17,7 +17,7 @@ interface ProductProps {
   title: string;
 }
 
-const Product = ({ title, children }: ProductProps) => {
+const Products = ({ title, children }: ProductProps) => {
   const { theme } = useThemeContext();
   return (
     <Box px="100px" my="20px">
@@ -44,4 +44,4 @@ const Product = ({ title, children }: ProductProps) => {
     </Box>
   );
 };
-export default Product;
+export default Products;
