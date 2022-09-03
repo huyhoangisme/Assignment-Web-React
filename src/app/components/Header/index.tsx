@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Filter from '../Filter';
 import Slidebar from '../Slidebar';
 
@@ -11,8 +11,8 @@ const Header = () => {
   const { theme } = useThemeContext();
 
   return (
-    <Box bgColor={theme.bgColor} height={100} fontSize={14}>
-      <Box className="flex items-center justify-between h-full px-[100px]">
+    <Box bgColor={theme.bgColor} fontSize={14}>
+      <Box className="flex items-center justify-between h-full px-[100px] border-b" height="100px">
         <LogoApp />
         <Box className="mx-[50px]">
           <Filter />
@@ -27,7 +27,6 @@ const Header = () => {
       <Box bgColor="inherit" mt="1px" px="100px">
         <Slidebar />
       </Box>
-      <Outlet />
     </Box>
   );
 };

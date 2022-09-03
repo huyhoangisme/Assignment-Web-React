@@ -2,6 +2,7 @@ import { Badge, Box, Fade, Text, useDisclosure } from '@chakra-ui/react';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { BsEye, BsHeart } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
 import ProductImage from './ProductImage';
 export interface DetailProductItem {
@@ -22,7 +23,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
     <Box
       p="10px"
       bgColor="#fff"
-      width="180px"
+      width="full"
       borderRadius="10px"
       onMouseOver={() => onOpen()}
       onMouseOut={() => onClose()}
@@ -51,7 +52,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
               bgColor="#EFEFEF"
               className="rounded-full flex items-center justify-center cursor-pointer"
             >
-              <BsEye fontSize="18px" color="#6c757d" />
+              <Link to={`product/${name}`}>
+                <BsEye fontSize="18px" color="#6c757d" />
+              </Link>
             </Box>
             <Box
               width="30px"
@@ -68,7 +71,9 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
         <Text fontSize="14px" className="cursor-pointer py-3" _hover={{ color: theme.bgColor }}>
           {name}
         </Text>
-        <Text color={theme.bgColor}>{price}</Text>
+        <Text color={theme.bgColor} fontSize="14px">
+          {price}
+        </Text>
       </Box>
     </Box>
   );

@@ -14,6 +14,7 @@
 - Axios
 - Query string
 - React Icons
+- Swiper
 
 ## VS Code configuration
 

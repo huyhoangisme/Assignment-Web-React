@@ -1,18 +1,15 @@
 import { Box, Center, Text } from '@chakra-ui/react';
 import Button from 'app/components/Button';
-import Footer from 'app/components/Footer';
 import Form from 'app/components/Form';
-
 import InputField from 'app/components/Form/InputField';
-import LogoApp from 'app/components/Header/Logo';
 import Title from 'app/components/Title';
-
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { AiOutlineGooglePlus } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+
 const schema = yup.object().shape({
   email: yup.string().trim().required('Vui lòng điền vào mục này'),
   password: yup.string().trim().required('Vui lòng điền vào mục này'),
@@ -27,10 +24,6 @@ export const Register = () => {
   const handleSubmit = () => {};
   return (
     <Box>
-      <Box bgColor={theme.bgColor} py={10} className="flex items-center px-[100px] space-x-6">
-        <LogoApp />
-        <Text fontSize={25}>Đăng kí</Text>
-      </Box>
       <Center>
         <Box w={400} p={30} marginY="40px" border={'1px solid #EBEBEB'} className="shadow-lg">
           <Box className="text-center">
@@ -78,7 +71,6 @@ export const Register = () => {
           </Box>
         </Box>
       </Center>
-      <Footer />
     </Box>
   );
 };

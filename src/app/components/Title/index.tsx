@@ -5,7 +5,7 @@ interface TitleProps extends TextProps {
 }
 const Title: React.FC<TitleProps> = ({ title, ...props }: TitleProps) => {
   return (
-    <Text {...props} className="uppercase text-xl text-bold">
+    <Text {...props} className="uppercase text-xl text-bold pt-2">
       {title}
     </Text>
   );
