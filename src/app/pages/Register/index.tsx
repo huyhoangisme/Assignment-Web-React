@@ -11,10 +11,9 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
+  name: yup.string().trim().required('Vui lòng điền vào mục này'),
   email: yup.string().trim().required('Vui lòng điền vào mục này'),
   password: yup.string().trim().required('Vui lòng điền vào mục này'),
-  firstName: yup.string().trim().required('Vui lòng điền vào mục này'),
-  lastName: yup.string().trim().required('Vui lòng điền vào mục này'),
   phonenumber: yup.string().trim().required('Vui lòng điền vào mục này'),
   confirmPassword: yup.string().trim().required('Vui lòng điền vào mục này'),
 });
@@ -37,8 +36,7 @@ export const Register = () => {
           </Box>
           <Form validationSchema={schema} onSubmit={handleSubmit}>
             <Box className="space-y-4 w-full">
-              <InputField name="firstName" placeholder="Họ" bgColor="#EBEBEB" />
-              <InputField name="lastName" placeholder="Tên" type="password" bgColor="#EBEBEB" />
+              <InputField name="name" placeholder="Họ và tên" bgColor="#EBEBEB" />
               <InputField name="email" placeholder="Email" bgColor="#EBEBEB" />
               <InputField name="phonenumber" placeholder="Số điện thoại" bgColor="#EBEBEB" />
               <InputField name="password" placeholder="Mật khẩu" type="password" bgColor="#EBEBEB" />

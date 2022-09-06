@@ -5,7 +5,13 @@ interface ButtonChakraProps extends ButtonProps {
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
 }
-const Button: React.FC<ButtonChakraProps> = ({ children, leftIcon, rightIcon, ...props }: ButtonChakraProps) => {
+const Button: React.FC<ButtonChakraProps> = ({
+  children,
+  leftIcon,
+  rightIcon,
+
+  ...props
+}: ButtonChakraProps) => {
   return (
     <ButtonChakra leftIcon={leftIcon} rightIcon={rightIcon} {...props}>
       {children}

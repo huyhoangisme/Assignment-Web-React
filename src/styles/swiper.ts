@@ -1,34 +1,34 @@
 import styled from 'styled-components';
 
 export const Swagger = styled.div`
-  .swiper {
-    width: 100%;
-    height: 100%;
+  .product-images-slider {
+    .swiper-slide {
+      text-align: center;
+      background: #fff;
+      overflow: hidden;
+      position: relative;
+
+
+    }
+    .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
   }
+  .product-images-slider-thumb {
+    .swiper-slide {
+      cursor: pointer;
+    }
+    .swiper-slide-thumb-active {
+      border:1px solid red;
+      border-radius:5px;
+    }
+    .swiper-wrapper {
+      margin:10px 0;
+    }
 
-  .swiper-slide {
-    text-align: center;
-
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
   }
-
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .
 `;

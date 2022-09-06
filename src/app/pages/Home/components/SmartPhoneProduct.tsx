@@ -10,28 +10,28 @@ const SmartPhoneProduct = () => {
     <Box>
       <Products title="điện thoại thông minh">
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
         <SwiperSlide className="flex items-center justify-center p-0 !rounded-lg">
-          <ProductItem productItem={{ name: 'hoang', src: Product1, labelButton: 'Buy', price: '10000' }} />
+          <ProductItem productItem={{ name: 'hoang', src: Product1, label: 'Buy', price: 10000 }} />
         </SwiperSlide>
       </Products>
     </Box>

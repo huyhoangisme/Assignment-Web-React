@@ -2,23 +2,23 @@ import { Box } from '@chakra-ui/react';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { BsArrowRight } from 'react-icons/bs';
-import { Swagger } from 'styles/swiper';
-import { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Swiper } from 'swiper/react';
 import '../../../styles/swiper.ts';
 import Button from '../Button';
+import Carousel from '../Carousel';
 import Title from '../Title';
 
 interface ProductProps {
   children: React.ReactNode;
   title: string;
+  pagination?: any;
 }
 
-const Products = ({ title, children }: ProductProps) => {
+const Products = ({ title, children, pagination }: ProductProps) => {
   const { theme } = useThemeContext();
+
   return (
     <Box px="100px" my="20px">
       <Box className="flex justify-between items-center">
@@ -30,17 +30,9 @@ const Products = ({ title, children }: ProductProps) => {
           Xem thêm
         </Button>
       </Box>
-      <Swagger className="mt-10">
-        <Swiper
-          slidesPerView={6}
-          spaceBetween={30}
-          slidesPerGroup={1}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-        >
-          {children}
-        </Swiper>
-      </Swagger>
+      <Carousel slidesPerView={6} spaceBetween={30} navigation>
+        {children}
+      </Carousel>
     </Box>
   );
 };

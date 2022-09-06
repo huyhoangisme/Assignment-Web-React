@@ -1,4 +1,5 @@
 import { Badge, Box, Fade, Text, useDisclosure } from '@chakra-ui/react';
+import { useNumberWithDot } from 'app/hooks/useNumberWithDot';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { BsEye, BsHeart } from 'react-icons/bs';
@@ -8,9 +9,9 @@ import ProductImage from './ProductImage';
 export interface DetailProductItem {
   name: string;
   src: string;
-  labelButton: string;
-  price: string;
-  salePercent?: string;
+  label: string;
+  price: number;
+  discount?: string;
 }
 interface ProductItemProps {
   productItem: DetailProductItem;
@@ -18,7 +19,7 @@ interface ProductItemProps {
 const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemProps) => {
   const { theme } = useThemeContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { name, src, labelButton, price, salePercent } = productItem;
+  const { name, src, label, price, discount } = productItem;
   return (
     <Box
       p="10px"
@@ -30,7 +31,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
     >
       <Box className="relative">
         <ProductImage src={src} />
-        {salePercent && (
+        {discount && (
           <Box className="absolute flex justify-center top-0 left-0">
             <Badge
               bgColor="#4DB23D"
@@ -38,12 +39,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
               w="45px"
               borderRadius="4px"
               className="flex text-center !font-normal py-[1px]"
-            >{`${salePercent} %`}</Badge>
+            >{`${discount} %`}</Badge>
           </Box>
         )}
         <Fade in={isOpen}>
           <Box className="absolute bottom-0 left-0 right-0">
-            <Button variant="button-product-list">{labelButton}</Button>
+            <Button variant="button-product-list">{label}</Button>
           </Box>
           <Box className="absolute right-0 top-0 space-y-2">
             <Box
@@ -72,7 +73,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
           {name}
         </Text>
         <Text color={theme.bgColor} fontSize="14px">
-          {price}
+          {`${useNumberWithDot(price)} ₫`}
         </Text>
       </Box>
     </Box>

@@ -26,6 +26,9 @@ import { HomePage } from './pages/Home/Loadable';
 import { AuthContextProvider } from './components/Auth/AuthContext';
 import { authProvider } from './pages/Login/components/AuthProvider';
 import { DetailProductPage } from './pages/Home/features/DetailProduct/Loadable';
+import { ModalCartPage } from './pages/Cart/features/ModalCart/Loadable';
+import { CheckoutPage } from './pages/Checkout/Loadable';
+import { CartPage } from './pages/Cart/Loadable';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -53,12 +56,15 @@ export function App() {
               <Route path="/" element={<Layout />}>
                 <Route path="/" element={<HomePage />}>
                   <Route path="product/:name" element={<DetailProductPage />} />
+                  <Route path="product/cart" element={<ModalCartPage />} />
                 </Route>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/gioithieu" element={<IntroducePage />} />
                 <Route path="/lienhe" element={<ContactPage />} />
+                <Route path="/cart" element={<CartPage />} />
               </Route>
+              <Route path="/checkout/:id" element={<CheckoutPage />} />
             </Routes>
           </AuthContextProvider>
           <GlobalStyle />

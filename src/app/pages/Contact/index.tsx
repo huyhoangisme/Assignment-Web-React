@@ -1,12 +1,11 @@
 import { Box, Text } from '@chakra-ui/react';
 import Button from 'app/components/Button';
-import Footer from 'app/components/Footer';
 import Form from 'app/components/Form';
 import InputField from 'app/components/Form/InputField';
 import Textarea from 'app/components/Form/Textarea';
 import React from 'react';
+import { MdEmail, MdLocalPhone, MdLocationOn } from 'react-icons/md';
 import * as yup from 'yup';
-import { MdLocationOn, MdEmail, MdLocalPhone } from 'react-icons/md';
 const schema = yup.object().shape({});
 export const Contact = () => {
   const handleSubmit = () => {};
@@ -52,7 +51,6 @@ export const Contact = () => {
           ></iframe>
         </Box>
       </Box>
-      <Footer />
     </>
   );
 };

@@ -11,7 +11,7 @@ import {
 import { useThemeContext } from 'app/themes/ThemeProvider';
 interface MenuProps extends MenuPropsChakra {
   title: string;
-  children: React.ReactNode;
+  children: JSX.Element[];
   rightIcon?: React.ReactNode;
   menuButtonProps?: MenuButtonProps;
   menuListProps?: MenuListProps;
