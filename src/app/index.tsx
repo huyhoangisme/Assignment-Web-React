@@ -8,27 +8,31 @@
 
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
-
-import { useTranslation } from 'react-i18next';
-
-import ThemeProvider from './themes/ThemeProvider';
+import { AuthContextProvider } from './components/Auth/AuthContext';
+import PrivateOutlet from './components/Auth/PrivateOutlet';
 import { Layout } from './layouts/Layout';
+import { LayoutDashBoard } from './layouts/LayoutDashBoard';
+import { ChangePasswordPage } from './pages/Account/features/ChangePassword/Loadable';
+import { InformationPage } from './pages/Account/features/Information/Loadable';
+import { UpdateProfilePage } from './pages/Account/features/UpdateProfile/Loadable';
+import { AccountPage } from './pages/Account/Loadable';
+import { ModalCartPage } from './pages/Cart/features/ModalCart/Loadable';
+import { CartPage } from './pages/Cart/Loadable';
+import { CheckoutPage } from './pages/Checkout/Loadable';
+import { ContactPage } from './pages/Contact/Loadable';
+import { DetailProductPage } from './pages/Home/features/DetailProduct/Loadable';
+import { HomePage } from './pages/Home/Loadable';
+import { IntroducePage } from './pages/Introduce/Loadable';
+import { authProvider } from './pages/Login/components/AuthProvider';
 import { LoginPage } from './pages/Login/Loadable';
 import { RegisterPage } from './pages/Register/Loadable';
-import { IntroducePage } from './pages/Introduce/Loadable';
-import { ContactPage } from './pages/Contact/Loadable';
-import { HomePage } from './pages/Home/Loadable';
-import { AuthContextProvider } from './components/Auth/AuthContext';
-import { authProvider } from './pages/Login/components/AuthProvider';
-import { DetailProductPage } from './pages/Home/features/DetailProduct/Loadable';
-import { ModalCartPage } from './pages/Cart/features/ModalCart/Loadable';
-import { CheckoutPage } from './pages/Checkout/Loadable';
-import { CartPage } from './pages/Cart/Loadable';
+import { UsersPage } from './pages/Users/Loadable';
+import ThemeProvider from './themes/ThemeProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -63,8 +67,19 @@ export function App() {
                 <Route path="/gioithieu" element={<IntroducePage />} />
                 <Route path="/lienhe" element={<ContactPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/account" element={<AccountPage />}>
+                  <Route index element={<InformationPage />} />
+                  <Route path="changepassword" element={<ChangePasswordPage />} />
+                  <Route path="updateprofile" element={<UpdateProfilePage />} />
+                </Route>
               </Route>
-              <Route path="/checkout/:id" element={<CheckoutPage />} />
+              <Route path="/checkout/:id" element={<PrivateOutlet />}>
+                <Route path="/checkout/:id" element={<CheckoutPage />} />
+              </Route>
+              <Route path="/dashboard" element={<LayoutDashBoard />}>
+                <Route path="/dashboard" element={<UsersPage />}></Route>
+                <Route path="product" element={<UsersPage />} />
+              </Route>
             </Routes>
           </AuthContextProvider>
           <GlobalStyle />

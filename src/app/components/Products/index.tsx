@@ -21,7 +21,7 @@ const Products = ({ title, children, pagination }: ProductProps) => {
 
   return (
     <Box px="100px" my="20px">
-      <Box className="flex justify-between items-center">
+      <Box className="flex justify-between items-center mb-[24px] ">
         <Box>
           <Title title={title} _hover={{ color: theme.bgColor }} />
           <Box className="border-b-[3px] border-[#f45c43] rounded-full" width="100px"></Box>

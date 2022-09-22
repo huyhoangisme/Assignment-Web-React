@@ -1,36 +1,39 @@
-import { Box, Popover, PopoverArrow, PopoverBody, PopoverContent, PopoverTrigger } from '@chakra-ui/react';
-import React from 'react';
+import { Box } from '@chakra-ui/react';
+import { useNumberWithDot } from 'app/hooks/useNumberWithDot';
+import { useAppDispatch, useAppSelector } from 'app/redux/root';
+import { cartItemsSelector, shoppingCartActions } from 'app/redux/shoppingcarts/shoppingCartSlice';
+import { useThemeContext } from 'app/themes/ThemeProvider';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button';
-interface CartProps {
-  mode?: 'click' | 'hover';
-  title?: string;
-  leftIcon?: JSX.Element;
-  children: React.ReactNode;
-}
-const Cart: React.FC<CartProps> = ({ mode = 'click', title, leftIcon, children }: CartProps) => {
+import CartItem, { DetailCart } from './CartItem';
+const Cart = () => {
+  const { theme } = useThemeContext();
+  const dispatch = useAppDispatch();
+  const cartItems = useAppSelector(cartItemsSelector);
+  useEffect(() => {
+    dispatch(shoppingCartActions.getCartItems());
+  }, [cartItems, dispatch]);
   return (
-    <Box className="relative">
-      <Popover trigger={mode} placement="bottom">
-        <PopoverTrigger>
-          <Button
-            fontSize="14px"
-            bgColor="inherit"
-            fontWeight={500}
-            _hover={{ bg: 'inherit' }}
-            _active={{ bg: 'inherit' }}
-            leftIcon={leftIcon}
-            px={0}
-          >
-            {title}
-          </Button>
-        </PopoverTrigger>
-        <Box className="absolute left-0 ">
-          <PopoverContent>
-            <PopoverArrow />
-            <PopoverBody>{children}</PopoverBody>
-          </PopoverContent>
+    <Box mt="18px">
+      {cartItems &&
+        cartItems?.map((item, index) => {
+          return <CartItem item={item as DetailCart} key={index} />;
+        })}
+
+      <Box className="flex justify-end" fontSize="14px">
+        <Box className="w-1/3 mb-3">
+          <Box className="flex justify-between" color={theme.bgColor} my="10px">
+            <Box color={theme.textColor}>Tổng tiền:</Box>
+            <Box>{`${useNumberWithDot(10000000)} ₫`}</Box>
+          </Box>
+          <Link to="/checkout/1">
+            <Button variant="button-outline" bgColor={theme.textColor} fontWeight="400">
+              Thanh toán
+            </Button>
+          </Link>
         </Box>
-      </Popover>
+      </Box>
     </Box>
   );
 };

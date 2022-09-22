@@ -1,17 +1,20 @@
+import { AuthResponse } from 'app/api/auth/models';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 export interface Identity {
   id: number;
-  firstName: string;
-  lastName: string;
+  name: string;
+  role: string;
   email: string;
   phonenumber: string;
-  avatar: string;
+  avatar?: string;
 }
 export interface AuthProvider {
-  login: (email: string, password: string) => void;
+  login: (email: string, password: string) => Promise<AuthResponse>;
+  signUp: (email: string, name: string, password: string, confirmPassword: string) => Promise<AuthResponse>;
   logout: () => void;
   getIdentity: () => Promise<Identity | null>;
   getRole: () => Promise<string | undefined>;
+  changePassword: (currentPassword: string, password: string, confirmPassword: string) => Promise<void>;
 }
 
 interface AuthContextValues {
@@ -21,7 +24,7 @@ interface AuthContextValues {
   currentUser?: Identity | null;
   role?: string;
   error?: Error;
-  setAuthState: (authenticated: boolean, identity?: Identity, role?: string) => void;
+  setAuthState: (authenticated: boolean, identity?: Identity | null, role?: string) => void;
 }
 const AuthContext = createContext<AuthContextValues>({} as AuthContextValues);
 export const AuthContextProvider: React.FC<{ authProvider: AuthProvider; children: React.ReactNode }> = ({

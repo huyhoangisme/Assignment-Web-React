@@ -14,7 +14,6 @@ export const usePagination = () => {
   }, []);
   useEffect(() => {
     params.set('page', pageIndex.toString());
-
     setParams(params);
   }, [pageIndex]);
   useEffect(() => {

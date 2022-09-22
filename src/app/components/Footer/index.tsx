@@ -66,19 +66,19 @@ const Footer = () => {
         </Box>
         <Box>
           <Title title="Hỗ trợ khách hàng" color="#fff" />
-          <SlidebarItem path="" title="Mua hàng và thanh toán online" />
-          <SlidebarItem path="" title="Mua hàng và trả góp online" />
-          <SlidebarItem path="" title="Trung tâm bảo hàng chính hãng" />
-          <SlidebarItem path="" title="Dịch vụ khách hàng" />
-          <SlidebarItem path="" title="Tra thông tin bảo hành" />
+          <SlidebarItem path="" title="Mua hàng và thanh toán online" color="#fff" />
+          <SlidebarItem path="" title="Mua hàng và trả góp online" color="#fff" />
+          <SlidebarItem path="" title="Trung tâm bảo hàng chính hãng" color="#fff" />
+          <SlidebarItem path="" title="Dịch vụ khách hàng" color="#fff" />
+          <SlidebarItem path="" title="Tra thông tin bảo hành" color="#fff" />
         </Box>
         <Box>
           <Title title="Thông tin khác" color="#fff" />
-          <SlidebarItem path="" title="Quy chế hoạt động" />
-          <SlidebarItem path="" title="Chính sách bảo hành" />
-          <SlidebarItem path="" title="Liên hệ hợp tác kinh doanh" />
-          <SlidebarItem path="" title="Ưu đãi từ đối tác" />
-          <SlidebarItem path="" title="Trade-in thu cũ lên đời mới" />
+          <SlidebarItem path="" title="Quy chế hoạt động" color="#fff" />
+          <SlidebarItem path="" title="Chính sách bảo hành" color="#fff" />
+          <SlidebarItem path="" title="Liên hệ hợp tác kinh doanh" color="#fff" />
+          <SlidebarItem path="" title="Ưu đãi từ đối tác" color="#fff" />
+          <SlidebarItem path="" title="Trade-in thu cũ lên đời mới" color="#fff" />
         </Box>
       </Box>
     </Box>

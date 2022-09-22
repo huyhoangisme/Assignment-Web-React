@@ -27,7 +27,7 @@ const InputField: React.FC<InputProps> = ({ name, label = '', leftIcon, rightIco
 
   return (
     <div className="w-full">
-      {label && <div className="font-bold text-[16px] mb-[5px]">{label}</div>}
+      {label && <div className="text-[16px] mb-[5px]">{label}</div>}
 
       <InputGroup>
         {leftIcon && <InputLeftElement>{leftIcon}</InputLeftElement>}

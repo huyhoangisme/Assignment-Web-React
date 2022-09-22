@@ -1,4 +1,6 @@
 import { Box, Center, Text } from '@chakra-ui/react';
+import { useAuthContext } from 'app/components/Auth/AuthContext';
+import useLogin from 'app/components/Auth/useLogin';
 import Button from 'app/components/Button';
 import Form from 'app/components/Form';
 import InputField from 'app/components/Form/InputField';
@@ -8,16 +10,26 @@ import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { AiOutlineGooglePlus } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 const schema = yup.object().shape({
   email: yup.string().trim().required('Vui lòng điền vào mục này'),
   password: yup.string().trim().required('Vui lòng điền vào mục này'),
 });
-
+interface LoginParams {
+  email: string;
+  password: string;
+}
 export const Login = () => {
   const { theme } = useThemeContext();
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
+  const { login } = useLogin();
+  const { authenticated } = useAuthContext();
+
+  if (authenticated) navigate('/');
+  const handleSubmit = (data: LoginParams) => {
+    login && login(data);
+  };
   return (
     <Box>
       <Center>

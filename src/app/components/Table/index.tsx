@@ -51,7 +51,7 @@ function Table<T extends object>({
   } = useTable(
     {
       columns,
-      data,
+      data: data,
       initialState: { pageIndex: queryPageIndex, pageSize: queryPageSize },
       manualPagination: true,
       pageCount: (totalItems && queryPageSize && Math.ceil(totalItems / queryPageSize)) || 0,

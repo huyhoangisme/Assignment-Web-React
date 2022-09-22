@@ -1,25 +1,23 @@
 import { Badge, Box, Fade, Text, useDisclosure } from '@chakra-ui/react';
+import { Product } from 'app/api/products';
+import { Thumb1 } from 'app/assets';
 import { useNumberWithDot } from 'app/hooks/useNumberWithDot';
+import { productsActions } from 'app/redux/products/productsSlice';
+import { useAppDispatch } from 'app/redux/root';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { BsEye, BsHeart } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Button from '../Button';
 import ProductImage from './ProductImage';
-export interface DetailProductItem {
-  name: string;
-  src: string;
-  label: string;
-  price: number;
-  discount?: string;
-}
-interface ProductItemProps {
-  productItem: DetailProductItem;
-}
-const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemProps) => {
+
+const ProductItem = (product: Product) => {
   const { theme } = useThemeContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { name, src, label, price, discount } = productItem;
+  const dispatch = useAppDispatch();
+  const handleOpenDetailProduct = (id: string) => {
+    dispatch(productsActions.getProductById(id));
+  };
   return (
     <Box
       p="10px"
@@ -30,8 +28,8 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
       onMouseOut={() => onClose()}
     >
       <Box className="relative">
-        <ProductImage src={src} />
-        {discount && (
+        <ProductImage src={Thumb1} />
+        {/* {product?.discount && (
           <Box className="absolute flex justify-center top-0 left-0">
             <Badge
               bgColor="#4DB23D"
@@ -39,12 +37,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
               w="45px"
               borderRadius="4px"
               className="flex text-center !font-normal py-[1px]"
-            >{`${discount} %`}</Badge>
+            >{`${product.discount} %`}</Badge>
           </Box>
-        )}
+        )} */}
         <Fade in={isOpen}>
           <Box className="absolute bottom-0 left-0 right-0">
-            <Button variant="button-product-list">{label}</Button>
+            <Button variant="button-product-list">Thêm vào giỏ hàng</Button>
           </Box>
           <Box className="absolute right-0 top-0 space-y-2">
             <Box
@@ -53,7 +51,7 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
               bgColor="#EFEFEF"
               className="rounded-full flex items-center justify-center cursor-pointer"
             >
-              <Link to={`product/${name}`}>
+              <Link to={`product/${product?.name}`} onClick={() => handleOpenDetailProduct(product._id)}>
                 <BsEye fontSize="18px" color="#6c757d" />
               </Link>
             </Box>
@@ -70,10 +68,10 @@ const ProductItem: React.FC<ProductItemProps> = ({ productItem }: ProductItemPro
       </Box>
       <Box className="text-start">
         <Text fontSize="14px" className="cursor-pointer py-3" _hover={{ color: theme.bgColor }}>
-          {name}
+          {product?.name}
         </Text>
         <Text color={theme.bgColor} fontSize="14px">
-          {`${useNumberWithDot(price)} ₫`}
+          {`${useNumberWithDot(product?.price)} ₫`}
         </Text>
       </Box>
     </Box>

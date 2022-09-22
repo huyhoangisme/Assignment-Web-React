@@ -8,6 +8,8 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { AiFillFacebook } from 'react-icons/ai';
 import { AiOutlineGooglePlus } from 'react-icons/ai';
 import { IconProps } from '@chakra-ui/react';
+import deleteIcon from './images/delete.svg';
+import editIcon from './images/edit.svg';
 export const ArrowBack: React.FC<IconProps> = () => {
   return (
     <>
@@ -39,4 +41,15 @@ export const ArrowForward: React.FC<IconProps> = ({ color }) => {
   );
 };
 
-export { Logo, iconService, Product1, Thumb1, DropdownIcon, AiOutlineSearch, AiFillFacebook, AiOutlineGooglePlus };
+export {
+  Logo,
+  iconService,
+  Product1,
+  Thumb1,
+  deleteIcon,
+  editIcon,
+  DropdownIcon,
+  AiOutlineSearch,
+  AiFillFacebook,
+  AiOutlineGooglePlus,
+};

@@ -17,22 +17,25 @@ import './index.css';
 
 // Import root app
 import { App } from 'app';
-
 import { HelmetProvider } from 'react-helmet-async';
+import { Provider } from 'react-redux';
 
 import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
+import { store } from 'app/redux/store';
 import './locales/i18n';
 
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ReactDOMClient.createRoot(MOUNT_NODE!).render(
-  <HelmetProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </HelmetProvider>,
+  <Provider store={store}>
+    <HelmetProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </HelmetProvider>
+  </Provider>,
 );
 
 // Hot reloadable translation json files

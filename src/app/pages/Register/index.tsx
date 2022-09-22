@@ -1,4 +1,5 @@
-import { Box, Center, Text } from '@chakra-ui/react';
+import { Box, Center, Spinner, Text } from '@chakra-ui/react';
+import useSignUp from 'app/components/Auth/useSignUp';
 import Button from 'app/components/Button';
 import Form from 'app/components/Form';
 import InputField from 'app/components/Form/InputField';
@@ -7,20 +8,31 @@ import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { AiOutlineGooglePlus } from 'react-icons/ai';
 import { FaFacebookSquare } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-
+interface SignUpPayLoad {
+  email: string;
+  name: string;
+  password: string;
+  confirmPassword: string;
+}
 const schema = yup.object().shape({
   name: yup.string().trim().required('Vui lòng điền vào mục này'),
   email: yup.string().trim().required('Vui lòng điền vào mục này'),
   password: yup.string().trim().required('Vui lòng điền vào mục này'),
-  phonenumber: yup.string().trim().required('Vui lòng điền vào mục này'),
   confirmPassword: yup.string().trim().required('Vui lòng điền vào mục này'),
 });
 
 export const Register = () => {
   const { theme } = useThemeContext();
-  const handleSubmit = () => {};
+  const navigate = useNavigate();
+  const { loading, signUpSuccess, signUp } = useSignUp();
+  if (loading) return <Spinner />;
+  if (signUpSuccess) navigate('/login');
+  const handleSubmit = (data: SignUpPayLoad) => {
+    signUp && signUp(data);
+  };
+
   return (
     <Box>
       <Center>
@@ -38,7 +50,6 @@ export const Register = () => {
             <Box className="space-y-4 w-full">
               <InputField name="name" placeholder="Họ và tên" bgColor="#EBEBEB" />
               <InputField name="email" placeholder="Email" bgColor="#EBEBEB" />
-              <InputField name="phonenumber" placeholder="Số điện thoại" bgColor="#EBEBEB" />
               <InputField name="password" placeholder="Mật khẩu" type="password" bgColor="#EBEBEB" />
               <InputField name="confirmPassword" placeholder="Nhập lại mật khẩu" type="password" bgColor="#EBEBEB" />
               <Button type="submit" variant="button-outline" bg="#333">

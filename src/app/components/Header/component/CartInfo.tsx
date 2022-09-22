@@ -1,5 +1,5 @@
-import { AccordionIcon, Box, Text } from '@chakra-ui/react';
-import Cart from 'app/components/Cart';
+import { Box, Text } from '@chakra-ui/react';
+import CartGroup from 'app/components/CartGroup';
 import { useThemeContext } from 'app/themes/ThemeProvider';
 import React from 'react';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -10,7 +10,7 @@ interface Props {
 const CartInfo: React.FC<Props> = ({ mode = 'hover', title }: Props) => {
   const { theme } = useThemeContext();
   return (
-    <Cart
+    <CartGroup
       title={title}
       mode={mode}
       leftIcon={
@@ -29,8 +29,8 @@ const CartInfo: React.FC<Props> = ({ mode = 'hover', title }: Props) => {
         </Box>
       }
     >
-      Tadaa!! The arrow color and background color is customized. Check the props for each component.555555
-    </Cart>
+      hahah
+    </CartGroup>
   );
 };
 export default CartInfo;
