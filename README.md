@@ -1,4 +1,4 @@
-# StingSoccer
+# Ecommerce
 
 ## Tech stack
 
